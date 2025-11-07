@@ -9,7 +9,17 @@ export default function App() {
   return (
     <div className="min-h-screen">
       <Header />
-      <Hero backgroundImage="/hero-bg.jpg" />
+      <Hero
+        images={[
+          '/public/slide-1.jpg',
+          '/public/slide-1.jpg',
+          '/public/slide-1.jpg',
+          '/public/slide-1.jpg'
+        ]}
+        intervalMs={6000}
+        title="LOGISTICA MARTINEZ"
+        subtitle="Movemos tu carga, movemos tu negocio."
+      />
       <About />
       <Services />
       <Testimonials />

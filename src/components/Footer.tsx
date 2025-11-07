@@ -1,12 +1,9 @@
-import { Linkedin, Instagram, Facebook, Twitter, Youtube } from 'lucide-react';
+import { Mail, MessageCircle  } from 'lucide-react';
 
 export function Footer() {
   const socialLinks = [
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'X' },
-    { icon: Youtube, href: '#', label: 'YouTube' },
+    { icon: Mail, href: '#', label: 'mail' },
+    { icon: MessageCircle, href: '#', label: 'watsap' },
   ];
 
   return (
