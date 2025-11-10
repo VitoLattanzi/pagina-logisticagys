@@ -11,11 +11,11 @@ export default function App() {
       <Header />
       <Hero
         images={[
-          '/public/slide-1.png',
-          '/public/slide-2.png',
-          '/public/slide-3.png',     
-          '/public/slide-4.png',
-          '/public/slide-5.png',            
+          '/slide-1.png',
+          '/slide-2.png',
+          '/slide-3.png',     
+          '/slide-4.png',
+          '/slide-5.png',            
         ]}
         intervalMs={1000}
         title="LOGISTICA MARTINEZ"
