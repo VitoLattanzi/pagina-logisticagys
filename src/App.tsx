@@ -11,12 +11,13 @@ export default function App() {
       <Header />
       <Hero
         images={[
-          '/public/slide-1.jpg',
-          '/public/logo.png',
-          '/public/slide-1.jpg',
-          '/public/slide-1.jpg'
+          '/public/slide-1.png',
+          '/public/slide-2.png',
+          '/public/slide-3.png',     
+          '/public/slide-4.png',
+          '/public/slide-5.png',            
         ]}
-        intervalMs={6000}
+        intervalMs={1000}
         title="LOGISTICA MARTINEZ"
         subtitle="Movemos tu carga, movemos tu negocio."
       />

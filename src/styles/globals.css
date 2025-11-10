@@ -154,7 +154,16 @@ p {
 }
 
 /* ===================== BOTONES GENERALES ===================== */
-.button, .hero__button { display: inline-flex; align-items: center; gap: .5rem; border-radius: 999px; padding: .85rem 1.2rem; font-weight: 600; cursor: pointer; transition: transform .2s ease, background .2s ease, color .2s ease; }
+.button, .hero__button { 
+  display: inline-flex; 
+  align-items: center; 
+  gap: .5rem; 
+  border-radius: 999px; 
+  padding: .85rem 1.2rem; 
+  font-weight: 600; 
+  cursor: pointer; 
+  transition: transform .2s ease, background .2s ease, color .2s ease; 
+}
 .hero__button { background: rgba(15, 23, 42, .06); color: #0f172a; }
 .hero__button:hover { transform: translateY(-2px); background: rgba(15, 23, 42, .1); }
 .hero__button--primary { background: #4f46e5; color: #fff; }
