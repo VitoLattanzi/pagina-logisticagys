@@ -12,7 +12,7 @@ export default function App() {
       <Hero
         images={[
           '/public/slide-1.jpg',
-          '/public/slide-1.jpg',
+          '/public/logo.png',
           '/public/slide-1.jpg',
           '/public/slide-1.jpg'
         ]}
