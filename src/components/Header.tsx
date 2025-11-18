@@ -17,7 +17,7 @@ export function Header() {
       <div className="header__container">
         <div className="header__content">
           <a href='#inicio' className="header__logo">
-            <img src="/logo.png" alt="Logística Martínez" />
+            <img src="/logo3.png" alt="Logística Martínez" />
           </a>
 
           <nav className="header__nav">

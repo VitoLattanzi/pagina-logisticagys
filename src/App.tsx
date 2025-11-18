@@ -4,6 +4,7 @@ import { About } from './components/About';
 import { Services } from './components/Services';
 import { Testimonials } from './components/Testimonials';
 import { Footer } from './components/Footer';
+import { Contact } from './components/Contact';
 
 export default function App() {
   return (
@@ -13,9 +14,9 @@ export default function App() {
         images={[
           '/slide-1.png',
           '/slide-2.png',
-          '/slide-3.png',     
+          '/slide-3.png',
           '/slide-4.png',
-          '/slide-5.png',            
+          '/slide-5.png',
         ]}
         intervalMs={1000}
         title="LOGISTICA MARTINEZ"
@@ -24,6 +25,7 @@ export default function App() {
       <About />
       <Services />
       <Testimonials />
+      <Contact />
       <Footer />
     </div>
   );

@@ -25,7 +25,7 @@ export function About() {
         <div className="about__header">
           <h2 className="about__title">Qué hacemos</h2>
           <p className="about__description">
-           En Logística Martínez brindamos un servicio integral de transporte y distribución, gestionando cargas contenedorizadas y sueltas con eficiencia y seguridad. Retiramos tu mercadería del puerto o del punto que necesites, la almacenamos en nuestro depósito y la distribuimos a destino, ofreciendo soluciones logísticas completas que se adaptan a las necesidades de tu empresa.
+           En Logística Martínez brindamos un servicio integral de transporte y distribución, gestionando cargas en contenedores y sueltas con eficiencia y seguridad. Retiramos tu mercadería del puerto o del punto que necesites, la almacenamos en nuestro depósito y la distribuimos a destino, ofreciendo soluciones logísticas completas que se adaptan a las necesidades esepcificas de tu empresa.
           </p>
         </div>
 

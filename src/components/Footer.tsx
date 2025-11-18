@@ -11,7 +11,7 @@ export function Footer() {
       <div className="footer__container">
         <div className="footer__main">
           <div className="header__logo">
-            <img src="/logo.png" alt="Logística Martínez" />
+            <img src="/logo3.png" alt="Logística Martínez" />
           </div>
 
           <div className="footer__social">
