@@ -801,3 +801,53 @@ p {
 .min-h-screen {
   min-height: 100vh;
 }
+
+/* ==================== boton flotante ==================== */
+
+
+.floating-whatsapp-button {
+  position: fixed;
+  bottom: 1.75rem;
+  right: 1.5rem;
+  z-index: 50;
+  cursor: pointer;
+
+  width: 60px;
+  height: 60px;
+
+  background-color: #25D366; /* verde WhatsApp */
+  color: #ffffff;
+
+  border-radius: 50%;
+  border: none;
+  outline: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 16px 40px -18px rgba(0, 0, 0, 0.55);
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    filter 0.15s ease;
+}
+
+.floating-whatsapp-button:hover {
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 22px 55px -20px rgba(0, 0, 0, 0.7);
+  filter: brightness(1.1);
+}
+
+.floating-whatsapp-button:active {
+  transform: translateY(0) scale(0.96);
+  box-shadow: 0 10px 26px -16px rgba(0, 0, 0, 0.6);
+}
+
+/* Versión mobile */
+@media (max-width: 640px) {
+  .floating-whatsapp-button {
+    width: 52px;
+    height: 52px;
+    bottom: 1.2rem;
+    right: 1rem;
+  }
+}

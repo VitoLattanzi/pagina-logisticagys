@@ -5,6 +5,8 @@ import { Services } from './components/Services';
 import { Testimonials } from './components/Testimonials';
 import { Footer } from './components/Footer';
 import { Contact } from './components/Contact';
+import { FloatingContactButton } from './components/FloatingContactButton';
+
 
 export default function App() {
   return (
@@ -27,6 +29,9 @@ export default function App() {
       <Testimonials />
       <Contact />
       <Footer />
+
+      {/* Botón flotante siempre visible, como “header” pero abajo a la derecha */}
+      <FloatingContactButton />
     </div>
   );
 }

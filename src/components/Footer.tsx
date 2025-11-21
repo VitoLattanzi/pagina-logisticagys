@@ -9,10 +9,10 @@ export function Footer() {
   return (
     <footer id="contactanos" className="footer">
       <div className="footer__container">
-        <div className="footer__main">
-          <div className="header__logo">
-            <img src="/logo3.png" alt="Logística Martínez" />
-          </div>
+        <div className="footer__main">          
+          <a href="#inicio" className="header__logo">
+            <img src="/logo4.png" alt="Logística Martínez" />
+          </a>
 
           <div className="footer__social">
             {socialLinks.map((social, index) => {
