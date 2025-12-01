@@ -2,13 +2,6 @@
 import { MessageCircle } from 'lucide-react';
 
 export function FloatingContactButton() {
-  const handleClick = () => {
-    const contactSection = document.getElementById('contacto');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
   return (
     <a
       href="https://wa.me/541131109334"
