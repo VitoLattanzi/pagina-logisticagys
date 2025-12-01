@@ -1,9 +1,16 @@
-import { Mail, MessageCircle  } from 'lucide-react';
+import { Mail, MessageCircle } from "lucide-react";
+
+
 
 export function Footer() {
   const socialLinks = [
-    { icon: Mail, href: '#', label: 'mail' },
-    { icon: MessageCircle, href: '#', label: 'watsap' },
+    {
+      icon: Mail, // O el nombre de tu icono
+      href: "https://mail.google.com/mail/?view=cm&fs=1&to=vitofrancolattanzi@gmail.com&su=Contratacion%20de%20servicio&body=Hola%20Vito,%20estaba%20interesado%20en",
+      label: "Email"
+    },
+    { icon: MessageCircle, href:"https://wa.me/541131109334", label: "watsap" },
+      // ... otros
   ];
 
   return (
@@ -21,6 +28,8 @@ export function Footer() {
                 <a
                   key={index}
                   href={social.href}
+                  target="_blank"               // Abre en pestaña nueva
+                  rel="noopener noreferrer"     // Seguridad
                   aria-label={social.label}
                   className="footer__social-link"
                 >

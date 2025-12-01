@@ -10,13 +10,14 @@ export function FloatingContactButton() {
   };
 
   return (
-    <button
-      type="button"
+    <a
+      href="https://wa.me/541131109334"
+      target="_blank"
+      rel="noopener noreferrer"
       className="floating-whatsapp-button"
-      onClick={handleClick}
-      aria-label="Ir al formulario de contacto"
+      aria-label="Ir a mi perfil de GitHub"
     >
       <MessageCircle size={26} />
-    </button>
+    </a>
   );
 }
