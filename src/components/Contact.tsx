@@ -3,16 +3,18 @@ import React, { useState } from 'react';
 interface ContactFormState {
   name: string;
   email: string;
-  subject: string;
-  message: string;
+  asunto: string;
+  mensaje: string;
+  honey: string; // Campo trampa para bots
 }
 
 export function Contact() {
   const [form, setForm] = useState<ContactFormState>({
     name: '',
     email: '',
-    subject: '',
-    message: '',
+    asunto: '',
+    mensaje: '',
+    honey: '', // Inicialmente vacío
   });
   
   const [loading, setLoading] = useState(false);
@@ -26,6 +28,17 @@ export function Contact() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // --- SEGURIDAD ANTI-BOTS (Honeypot) ---
+    // Si el campo oculto "honey" tiene algo escrito, es un bot.
+    // Retornamos fake success y NO enviamos nada al servidor.
+    if (form.honey) {
+      console.log("Bot detectado y bloqueado."); 
+      setForm({ name: '', email: '', asunto: '', mensaje: '', honey: '' });
+      return; 
+    }
+    // --------------------------------------
+
     setLoading(true);
 
     // REEMPLAZÁ ESTE MAIL POR EL TUYO REAL
@@ -39,27 +52,27 @@ export function Contact() {
             'Accept': 'application/json'
         },
         body: JSON.stringify({
-            // Estos son tus datos
             name: form.name,
             email: form.email,
-            subject: form.subject,
-            message: form.message,
-            // Opciones extra de FormSubmit (opcionales)
-            _template: "basic", // Para que el mail se vea prolijo
-            _subject: `Nuevo contacto: ${form.subject}`, // Asunto del mail que te llega
-            _captcha: "false", // Para desactivar el captcha   
-            })
+            asunto: form.asunto,
+            message: form.mensaje,
+            // Opciones de configuración
+            _template: "table", // "table" suele verse mejor que "basic"
+            _asunto: `Nuevo contacto web: ${form.asunto}`,
+            // Nota: Al usar AJAX, no podemos mostrar el Captcha visual de Google.
+            // Confiamos en el Honeypot de arriba y los filtros internos de FormSubmit.
+        })
       });
 
       if (response.ok) {
-        alert('¡Mensaje enviado con éxito!');
-        setForm({ name: '', email: '', subject: '', message: '' });
+        alert('¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.');
+        setForm({ name: '', email: '', asunto: '', mensaje: '', honey: '' });
       } else {
-        alert('Hubo un problema al enviar. Intentá de nuevo.');
+        alert('Hubo un problema al enviar. Por favor, intentá nuevamente.');
       }
     } catch (error) {
       console.error(error);
-      alert('Error de conexión.');
+      alert('Error de conexión. Verificá tu internet.');
     } finally {
       setLoading(false);
     }
@@ -69,22 +82,28 @@ export function Contact() {
     <section id="contacto" className="contact">
       <div className="contact__container">
         <div className="contact__grid">
+          
           {/* Columna izquierda (Texto) */}
           <div className="contact__info">
             <h2 className="contact__title">Datos de contacto</h2>
-            <p className="contact__subtitle">
-              Coordiná tus envíos y consultá por soluciones logísticas a medida.
-            </p>
-            {/* ... (resto de tu info estática igual que antes) ... */}
+              <p className="contact__subtitle">
+                Coordiná tus envíos y consultá por soluciones logísticas a medida.
+              </p>
+                         
             <div className="contact__info-list">
-               {/* ... items ... */}
-               <div className="contact__info-item">
-                <span className="contact__info-label">Email</span>
-                <span className="contact__info-value">contacto@logisticamartinez.com</span>
+               {/* Ejemplo de item con icono */}
+              <div className="contact__info-item">
+                <span className="contact__title">Email</span>
+                <span className="contact__subtitle">contacto@logisticamartinez.com</span>
               </div>
+              {/* Agrega aquí teléfono o dirección si los tienes */}
             </div>
+          
+            <h2 className="contact__title">Ubicacion</h2>
+              <p className="contact__subtitle">
+                Nos encuentras en Florentino Ameghino 350/360, Avellaneda, Provincia de Buenos Aires
+              </p>
           </div>
-
           {/* Columna derecha (Formulario) */}
           <div className="contact__form-card">
             <h3 className="contact__form-title">Formulario de contacto</h3>
@@ -93,10 +112,19 @@ export function Contact() {
             </p>
 
             <form className="contact__form" onSubmit={handleSubmit}>
-              {/* CAMPOS OCULTOS TRUCOSOS (Honeypot) para evitar spam */}
-              <input type="text" name="_honey" style={{display: 'none'}} />
               
-              {/* ... Tus inputs siguen IGUAL que antes ... */}
+              {/* --- INPUT TRAMPA (HONEYPOT) --- */}
+              {/* Visible para bots, invisible para humanos. Si se llena, bloqueamos el envío */}
+              <input 
+                type="text" 
+                name="honey" 
+                value={form.honey}
+                onChange={handleChange}
+                style={{ display: 'none' }} 
+                tabIndex={-1} 
+                autoComplete="off"
+              />
+              {/* ------------------------------- */}
               
               <label className="contact__field">
                 <span className="contact__label">Nombre</span>
@@ -128,8 +156,8 @@ export function Contact() {
                 <span className="contact__label">Asunto</span>
                 <input
                   type="text"
-                  name="subject"
-                  value={form.subject}
+                  name="asunto"
+                  value={form.asunto}
                   onChange={handleChange}
                   className="contact__input"
                   placeholder="Asunto..."
@@ -140,11 +168,11 @@ export function Contact() {
               <label className="contact__field">
                 <span className="contact__label">Mensaje</span>
                 <textarea
-                  name="message"
-                  value={form.message}
+                  name="mensaje"
+                  value={form.mensaje}
                   onChange={handleChange}
                   className="contact__textarea"
-                  placeholder="Mensaje..."
+                  placeholder="Escribí tu mensaje aquí..."
                   rows={5}
                   required
                 />
