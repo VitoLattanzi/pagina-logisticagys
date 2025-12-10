@@ -1,11 +1,11 @@
 import React, { useState } from 'react'; 
-
+import "../styles/globals.css";
 interface ContactFormState {
   name: string;
   email: string;
   asunto: string;
   mensaje: string;
-  honey: string; // Campo trampa para bots
+  honey: string; 
 }
 
 export function Contact() {
@@ -14,7 +14,7 @@ export function Contact() {
     email: '',
     asunto: '',
     mensaje: '',
-    honey: '', // Inicialmente vacío
+    honey: '', 
   });
   
   const [loading, setLoading] = useState(false);
@@ -30,14 +30,11 @@ export function Contact() {
     e.preventDefault();
 
     // --- SEGURIDAD ANTI-BOTS (Honeypot) ---
-    // Si el campo oculto "honey" tiene algo escrito, es un bot.
-    // Retornamos fake success y NO enviamos nada al servidor.
     if (form.honey) {
       console.log("Bot detectado y bloqueado."); 
       setForm({ name: '', email: '', asunto: '', mensaje: '', honey: '' });
       return; 
     }
-    // --------------------------------------
 
     setLoading(true);
 
@@ -56,11 +53,8 @@ export function Contact() {
             email: form.email,
             asunto: form.asunto,
             message: form.mensaje,
-            // Opciones de configuración
-            _template: "table", // "table" suele verse mejor que "basic"
+            _template: "table",
             _asunto: `Nuevo contacto web: ${form.asunto}`,
-            // Nota: Al usar AJAX, no podemos mostrar el Captcha visual de Google.
-            // Confiamos en el Honeypot de arriba y los filtros internos de FormSubmit.
         })
       });
 
@@ -83,27 +77,55 @@ export function Contact() {
       <div className="contact__container">
         <div className="contact__grid">
           
-          {/* Columna izquierda (Texto) */}
+          {/* Columna izquierda (Texto e Información) */}
           <div className="contact__info">
             <h2 className="contact__title">Datos de contacto</h2>
-              <p className="contact__subtitle">
-                Coordiná tus envíos y consultá por soluciones logísticas a medida.
-              </p>
+            <p className="contact__subtitle">
+              Coordiná tus envíos y consultá por soluciones logísticas a medida.
+            </p>
                          
             <div className="contact__info-list">
-               {/* Ejemplo de item con icono */}
               <div className="contact__info-item">
-                <span className="contact__title">Email</span>
-                <span className="contact__subtitle">contacto@logisticamartinez.com</span>
+                <span className="contact__info-label">Email</span>
+                <span className="contact__info-value">contacto@logisticamartinez.com</span>
               </div>
-              {/* Agrega aquí teléfono o dirección si los tienes */}
             </div>
           
-            <h2 className="contact__title">Ubicacion</h2>
-              <p className="contact__subtitle">
-                Nos encuentras en Florentino Ameghino 350/360, Avellaneda, Provincia de Buenos Aires
-              </p>
+            <h2 className="contact__title" style={{ marginTop: '1.5rem' }}>Ubicación</h2>
+            <p className="contact__subtitle">
+              Nos encontrás en Florentino Ameghino 350/360, Avellaneda, Provincia de Buenos Aires.
+            </p>
+
+            {/* --- SECCIÓN MAPA RESPONSIVE --- */}
+            <div className="contact__map-wrapper">
+              
+              {/* OPCIÓN 1: Botón para Celulares (Link directo a la app) */}
+              {/* Poné acá el link que te da Google Maps al poner "Compartir" */}
+              <a 
+                href="https://goo.gl/maps/TU_LINK_DE_GOOGLE_MAPS_AQUI" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="contact__map-mobile-link"
+              >
+                📍 Abrir ubicación en GPS
+              </a>
+
+              {/* OPCIÓN 2: Mapa interactivo para PC (Iframe) */}
+              <div className="contact__map-desktop-frame">
+                <iframe 
+                  title="Ubicación Logística Martínez" 
+                  /* Poné acá el src del iframe que te da Google Maps */
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.9302515646386!2d-58.368821725063384!3d-34.656464360284424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a3335421be4b1d%3A0xa5d2050f0ae22eb2!2sFlorentino%20Ameghino%20350%2C%20B1870CVG%20Avellaneda%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1764868086731!5m2!1ses!2sar" 
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+
+            </div>
           </div>
+
           {/* Columna derecha (Formulario) */}
           <div className="contact__form-card">
             <h3 className="contact__form-title">Formulario de contacto</h3>
@@ -114,7 +136,6 @@ export function Contact() {
             <form className="contact__form" onSubmit={handleSubmit}>
               
               {/* --- INPUT TRAMPA (HONEYPOT) --- */}
-              {/* Visible para bots, invisible para humanos. Si se llena, bloqueamos el envío */}
               <input 
                 type="text" 
                 name="honey" 
@@ -124,7 +145,6 @@ export function Contact() {
                 tabIndex={-1} 
                 autoComplete="off"
               />
-              {/* ------------------------------- */}
               
               <label className="contact__field">
                 <span className="contact__label">Nombre</span>
