@@ -39,7 +39,7 @@ export function Contact() {
     setLoading(true);
 
     // REEMPLAZÁ ESTE MAIL POR EL TUYO REAL
-    const tuMail = "vitofrancolattanzi@gmail.com"; 
+    const tuMail = " info@logisticamartinez.com.ar"; 
     
     try {
       const response = await fetch(`https://formsubmit.co/ajax/${tuMail}`, {
@@ -102,7 +102,7 @@ export function Contact() {
               {/* OPCIÓN 1: Botón para Celulares (Link directo a la app) */}
               {/* Poné acá el link que te da Google Maps al poner "Compartir" */}
               <a 
-                href="https://goo.gl/maps/TU_LINK_DE_GOOGLE_MAPS_AQUI" 
+                href="https://maps.app.goo.gl/PsWcQeRrfKyeVnvx8" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="contact__map-mobile-link"
