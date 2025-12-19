@@ -39,7 +39,7 @@ export function Contact() {
     setLoading(true);
 
     // REEMPLAZÁ ESTE MAIL POR EL TUYO REAL
-    const tuMail = " info@logisticamartinez.com.ar"; 
+    const tuMail = "info@logisticamartinez.com.ar"; 
     
     try {
       const response = await fetch(`https://formsubmit.co/ajax/${tuMail}`, {
@@ -87,7 +87,7 @@ export function Contact() {
             <div className="contact__info-list">
               <div className="contact__info-item">
                 <span className="contact__info-label">Email</span>
-                <span className="contact__info-value">contacto@logisticamartinez.com</span>
+                <span className="contact__info-value">info@logisticamartinez.com.ar</span>
               </div>
             </div>
           
